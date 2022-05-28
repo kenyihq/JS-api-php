@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Web - Javascript (CRUD)</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <br>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-header">
+                        Empleados
+                    </div>
+                    <div class="card-body">
+
+                        <form action="javascript:void(0);" method="post" onsubmit="app.add()">
+                            <div class="mb-3">
+                              <label for="" class="form-label">Nombre</label>
+                              <input type="text"
+                                class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre del empleado">
+                            </div>
+
+                            <div class="mb-3">
+                              <label for="" class="form-label">Correo</label>
+                              <input type="email" class="form-control" name="email" id="correo" aria-describedby="emailHelpId" placeholder="Correo del empleado">
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Agregar empleado</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employee">
+                        
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+<script>
+
+    var app = new function() {
+        this.nombre = document.getElementById('nombre');
+        this.correo = document.getElementById('correo');
+
+        this.employee = document.getElementById('employee');
+
+        this.read = function(){
+            var data = "";
+            data = "<tr><th>1</th><td>Oscar</td><td>oscar@gmail.com</td><td>Editar | Borrar</td></tr>";
+            return this.employee.innerHTML = data;
+        };
+
+        this.add = function() {
+            console.log(nombre.value);
+            console.log(correo.value);
+        };
+
+
+    }
+
+    app.read();
+
+
+</script>
+
+</body>
+</html>
