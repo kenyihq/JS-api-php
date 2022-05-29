@@ -39,9 +39,18 @@ var app = new function() {
     this.add = function() {
         console.log(nombre.value);
         console.log(correo.value);
+
+        var dataAdd = {nombre:this.nombre.value, correo:this.correo.value};
+
+        fetch(url+"?insertar=1", {
+            method: 'POST',
+            body: JSON.stringify(dataAdd)})
+        .then((res)=>res.json())
+        .then(addRes=>{
+            console.log("Added succesfully");
+            this.read();
+        })
+        .catch(console.log);
     };
-
-
 }
-
 app.read();
