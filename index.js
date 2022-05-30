@@ -79,5 +79,12 @@ var app = new function() {
 
         modal.show();
     }
+
+    this.updateEmployee = function() {
+        console.log("update");
+        modal.hide();
+    }
+
+
 }
 app.read();
