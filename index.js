@@ -22,6 +22,7 @@ var app = new function() {
                                 <td>${employee.correo}</td>
                                 <td>
                                     <button class="btn btn-danger" onclick="app.delete(${employee.id})">Eliminar</button>
+                                    <button class="btn btn-warning" onclick="app.update(${employee.id})">Actualizar</button>
                                 </td>
                             </tr>`;
                 }
@@ -37,20 +38,43 @@ var app = new function() {
     };
 
     this.add = function() {
-        console.log(nombre.value);
-        console.log(correo.value);
+        // console.log(nombre.value);
+        // console.log(correo.value);
 
-        var dataAdd = {nombre:this.nombre.value, correo:this.correo.value};
+        var mail = this.correo.value;
+        var name = this.nombre.value;
+
+        var dataAdd = {nombre: name, correo: mail};
 
         fetch(url+"?insertar=1", {
             method: 'POST',
-            body: JSON.stringify(dataAdd)})
-        .then((res)=>res.json())
-        .then(addRes=>{
-            console.log("Added succesfully");
+            body: JSON.stringify(dataAdd)}) 
+        .then(r=>r.json())
+        .then(respuesta=>{
+            console.log(respuesta);
             this.read();
         })
-        .catch(console.log);
+        .catch(error=>{
+            console.log(error);
+        })
     };
+
+    this.delete = function(id) {
+        console.log(id);
+        fetch(url+"?borrar="+id) 
+        .then(r=>r.json())
+        .then(respuesta=>{
+            console.log(respuesta);
+            this.read();
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+        
+    }
+
+    this.update = function(id) {
+        console.log(id);
+    }
 }
 app.read();

@@ -34,25 +34,14 @@ if(isset($_GET["insertar"])){
     $data = json_decode(file_get_contents("php://input"));
     $nombre=$data->nombre;
     $correo=$data->correo;
-        if(($correo!="")&&($nombre!="")){
-            $validate_mail = "SELECT correo FROM empleados WHERE correo='$correo'";
-            $resultado = mysqli_query($conexionBD,$validate_mail);
-            if(mysqli_num_rows($resultado) > 0){
-                echo json_encode(["success"=>0]);
-                exit();
-            }
-            else{
-                $sqlEmpleaados = mysqli_query($conexionBD,"INSERT INTO empleados (nombre,correo) VALUES ('$nombre','$correo')");
-                if($sqlEmpleaados){
-                    echo json_encode(["success"=>1]);
-                    exit();
-                }
-                else{  echo json_encode(["success"=>0]); }
-            }
-            
-    $sqlEmpleaados = mysqli_query($conexionBD,"INSERT INTO empleados(nombre,correo) VALUES('$nombre','$correo') ");
-    echo json_encode(["success"=>1]);
-        }
+    if(($correo!="")&&($nombre!="")){
+        $validate_mail = "SELECT correo FROM empleados WHERE correo='$correo'";
+        $resultado = mysqli_query($conexionBD,$validate_mail);
+        if(mysqli_num_rows($resultado) == 0){
+            $sqlEmpleaados = mysqli_query($conexionBD,"INSERT INTO empleados(nombre,correo) VALUES('$nombre','$correo') ");
+            echo json_encode(["success"=>1]);
+        } 
+    } 
     exit();
 }
 // Actualiza datos pero recepciona datos de nombre, correo y una clave para realizar la actualización
