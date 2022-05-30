@@ -2,6 +2,10 @@ var url = "https://api-crud-tutankadev.cleverapps.io/";
 var modal = new bootstrap.Modal(document.getElementById("modelId"), {keyboard:false});
 
 var app = new function() {
+    this.idEditar = document.getElementById('idEditar');
+    this.nombreEditar = document.getElementById('nombreEditar');
+    this.correoEditar = document.getElementById('correoEditar');
+
     this.nombre = document.getElementById('nombre');
     this.correo = document.getElementById('correo');
 
@@ -77,12 +81,40 @@ var app = new function() {
     this.update = function(id) {
         console.log(id);
 
+        fetch(url+"?consultar="+id) 
+        .then(r=>r.json())
+        .then(respuesta=>{
+            this.idEditar.value = respuesta[0]['id'];
+            this.nombreEditar.value = respuesta[0]['nombre'];
+            this.correoEditar.value = respuesta[0]['correo'];
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+
         modal.show();
     }
 
     this.updateEmployee = function() {
-        console.log("update");
-        modal.hide();
+
+        var id = this.idEditar.value;
+        var mail = this.correoEditar.value;
+        var name = this.nombreEditar.value;
+
+        var dataAdd = {id: id, nombre: name, correo: mail};
+
+        fetch(url+"?actualizar=1", {
+            method: 'POST',
+            body: JSON.stringify(dataAdd)}) 
+        .then(r=>r.json())
+        .then(respuesta=>{
+            console.log(respuesta);
+            this.read();
+            modal.hide();
+        })
+        .catch(error=>{
+            console.log(error);
+        })
     }
 
 
