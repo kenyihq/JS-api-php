@@ -1,4 +1,5 @@
 var url = "http://localhost:8000/";
+var modal = new bootstrap.Modal(document.getElementById("modelId"), {keyboard:false});
 
 var app = new function() {
     this.nombre = document.getElementById('nombre');
@@ -75,6 +76,8 @@ var app = new function() {
 
     this.update = function(id) {
         console.log(id);
+
+        modal.show();
     }
 }
 app.read();
