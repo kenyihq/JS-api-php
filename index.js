@@ -1,4 +1,4 @@
-var url = "http://localhost:8000/";
+var url = "https://api-crud-tutankadev.cleverapps.io/";
 var modal = new bootstrap.Modal(document.getElementById("modelId"), {keyboard:false});
 
 var app = new function() {
