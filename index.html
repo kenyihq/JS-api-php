@@ -1,105 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>App Web - Javascript (CRUD)</title>
+    <link
+      rel="stylesheet"
+      href="https://kenyihq.github.io/portfolio-backup/css/index.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-</head>
-<body>    
-    <div class="container">
-        <br>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <a href="https://kenyihq.github.io/portfolio-backup/">
+          <img
+            src="https://kenyihq.github.io/portfolio-backup/img/logo.png"
+            alt="Logo"
+            width="155"
+          />
+        </a>
+        <nav class="menu" aria-label="main-navigation">
+          <ul>
+            <li>
+              <a href="https://kenyihq.github.io/portfolio-backup/#projects"
+                >Proyectos</a
+              >
+            </li>
+            <li>
+              <a href="https://kenyihq.github.io/portfolio-backup/#contact"
+                >Hablemos</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://cuadernodelprogramador.blogspot.com/"
+                target="_blank"
+                >Blog</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <button class="button">
+          <a href="https://kenyihq.github.io/portfolio-backup/#certificates"
+            >Certificados</a
+          >
+        </button>
+      </header>
+      <div class="container">
+        <br />
         <div class="row">
-            <!-- Modal -->
-            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-
-                        <form action="javascript:void(0);" method="post" onsubmit="app.updateEmployee()">
-
-                            <div class="modal-header">
-                                <h5 class="modal-title">Editar empleado</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="mb-3">
-                                <label for="idEditar" class="form-label">ID</label>
-                                <input type="text"
-                                    class="form-control" name="idEditar" id="idEditar" aria-describedby="helpId" placeholder="Id del empleado">
-                                </div>                            
-                                
-                                <div class="mb-3">
-                                <label for="" class="form-label">Nombre</label>
-                                <input type="text"
-                                    class="form-control" name="nombreEditar" id="nombreEditar" aria-describedby="helpId" placeholder="Nombre del empleado">
-                                </div>
-
-                                <div class="mb-3">
-                                <label for="" class="form-label">Correo</label>
-                                <input type="email" class="form-control" name="emailEditar" id="correoEditar" aria-describedby="emailHelpId" placeholder="Correo del empleado">
-                                </div>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-success">Guardar</button>
-                            </div>
-                        </form>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modelId"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="modelTitleId"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form
+                  action="javascript:void(0);"
+                  method="post"
+                  onsubmit="app.updateEmployee()"
+                >
+                  <div class="modal-header">
+                    <h5 class="modal-title">Editar empleado</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="mb-3">
+                      <label for="idEditar" class="form-label">ID</label>
+                      <input
+                        readonly
+                        type="text"
+                        class="form-control"
+                        name="idEditar"
+                        id="idEditar"
+                        aria-describedby="helpId"
+                        placeholder="Id del empleado"
+                      />
                     </div>
-                </div>
-            </div>
-            
-            <div class="col-md-5">
-                <div class="card">
-                    <div class="card-header">
-                        Empleados
+
+                    <div class="mb-3">
+                      <label for="" class="form-label">Nombre</label>
+                      <input
+                        required
+                        type="text"
+                        class="form-control"
+                        name="nombreEditar"
+                        id="nombreEditar"
+                        aria-describedby="helpId"
+                        placeholder="Nombre del empleado"
+                      />
                     </div>
-                    <div class="card-body">
 
-                        <form action="javascript:void(0);" method="post" onsubmit="app.add()">
-                            <div class="mb-3">
-                              <label for="" class="form-label">Nombre</label>
-                              <input type="text"
-                                class="form-control" name="nombre" id="nombre" aria-describedby="helpId" placeholder="Nombre del empleado">
-                            </div>
-
-                            <div class="mb-3">
-                              <label for="" class="form-label">Correo</label>
-                              <input type="email" class="form-control" name="email" id="correo" aria-describedby="emailHelpId" placeholder="Correo del empleado">
-                            </div>
-
-                            <button type="submit" class="btn btn-success">Agregar empleado</button>
-
-                        </form>
-
+                    <div class="mb-3">
+                      <label for="" class="form-label">Correo</label>
+                      <input
+                        required
+                        type="email"
+                        class="form-control"
+                        name="emailEditar"
+                        id="correoEditar"
+                        aria-describedby="emailHelpId"
+                        placeholder="Correo del empleado"
+                      />
                     </div>
-                </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                    >
+                      Cerrar
+                    </button>
+                    <button type="submit" class="btn btn-success">
+                      Guardar
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="col-md-7">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nombre</th>
-                            <th>Correo</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="employee">
-                        
-                        
-                    </tbody>
-                </table>
-                
+          </div>
+
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-header">Empleados</div>
+              <div class="card-body">
+                <form
+                  action="javascript:void(0);"
+                  method="post"
+                  onsubmit="app.add()"
+                >
+                  <div class="mb-3">
+                    <label for="" class="form-label">Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="nombre"
+                      id="nombre"
+                      aria-describedby="helpId"
+                      placeholder="Nombre del empleado"
+                    />
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="" class="form-label">Correo</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      name="email"
+                      id="correo"
+                      aria-describedby="emailHelpId"
+                      placeholder="Correo del empleado"
+                    />
+                  </div>
+
+                  <button type="submit" class="btn btn-success">
+                    Agregar empleado
+                  </button>
+                </form>
+              </div>
             </div>
+          </div>
+          <div class="col-md-7">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="employee"></tbody>
+            </table>
+          </div>
         </div>
+      </div>
     </div>
-    <script src="index.js" ></script>
-</body>
+    <script src="index.js"></script>
+  </body>
 </html>

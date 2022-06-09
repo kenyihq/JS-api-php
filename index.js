@@ -116,7 +116,5 @@ var app = new function() {
             console.log(error);
         })
     }
-
-
 }
 app.read();
